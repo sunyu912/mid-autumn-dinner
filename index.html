@@ -108,6 +108,20 @@
   .dish { text-align: center; padding: 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); }
   .dish span { display: block; font-size: 30px; }
 
+  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gallery figure {
+    position: relative; overflow: hidden; border-radius: 16px; border: 1px solid var(--line);
+    aspect-ratio: 4 / 3; background: var(--card);
+  }
+  .gallery figure.wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s; }
+  .gallery figure:hover img { transform: scale(1.05); }
+  .gallery figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 10px; font-size: 15px;
+    background: linear-gradient(transparent, rgba(14, 21, 48, .85)); color: var(--gold-soft);
+  }
+  @media (max-width: 480px) { .gallery { grid-template-columns: 1fr; } .gallery figure.wide { aspect-ratio: 4 / 3; } }
+
   .rsvp { text-align: center; }
   .btn {
     display: inline-block; margin-top: 12px; padding: 14px 36px; border-radius: 999px;
@@ -153,6 +167,16 @@
       <p>又到一年中秋时。今年的中秋节恰逢周五，我们特别准备了一场温馨的家庭聚餐，希望大家放下一周的忙碌，一起吃顿团圆饭、赏月、聊聊家常。</p>
       <p>期待与你们相聚！</p>
       <p class="sign">—— [主人姓名] 敬邀</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>佳节剪影</h2>
+    <div class="gallery">
+      <figure class="wide"><img src="images/dinner.webp" alt="一家三代围坐圆桌吃团圆饭" style="object-position: center 60%"><figcaption>一家团圆，共享佳肴</figcaption></figure>
+      <figure><img src="images/mooncakes.webp" alt="木盘上的月饼和桂花茶" loading="lazy"><figcaption>月饼配桂花茶</figcaption></figure>
+      <figure><img src="images/lanterns.webp" alt="夜晚庭院里的红灯笼和满月" loading="lazy"><figcaption>灯笼映月</figcaption></figure>
+      <figure class="wide"><img src="images/moon.webp" alt="祖孙在阳台上一起赏月" loading="lazy" style="object-position: center 35%"><figcaption>饭后一起赏月</figcaption></figure>
     </div>
   </section>
 
