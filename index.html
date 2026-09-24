@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中秋家宴</title>
+<meta name="description" content="中秋节家庭聚餐邀请 · 9月25日（周五）晚上7点">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0e1530;
+    --night-2: #1a2350;
+    --gold: #f3c969;
+    --gold-soft: #ffe6a8;
+    --red: #c8423b;
+    --text: #f5efe0;
+    --muted: #b9b3a3;
+    --card: rgba(255, 255, 255, 0.06);
+    --line: rgba(243, 201, 105, 0.28);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    color: var(--text);
+    background: radial-gradient(ellipse at 50% 0%, var(--night-2) 0%, var(--night) 60%) fixed, var(--night);
+    min-height: 100vh;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .star {
+    position: absolute; width: 2px; height: 2px; border-radius: 50%;
+    background: #fff; animation: twinkle 3s infinite ease-in-out;
+  }
+  @keyframes twinkle { 0%,100% { opacity: .2 } 50% { opacity: 1 } }
+
+  main { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 0 16px 64px; }
+
+  /* Hero */
+  .hero { text-align: center; padding: 72px 0 48px; }
+  .moon {
+    width: 180px; height: 180px; margin: 0 auto 32px; border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%, #fff8dc 0%, var(--gold-soft) 35%, var(--gold) 75%, #d9a441 100%);
+    box-shadow: 0 0 60px 20px rgba(243, 201, 105, .35), 0 0 140px 60px rgba(243, 201, 105, .12);
+    position: relative; animation: glow 5s ease-in-out infinite;
+  }
+  .moon::before, .moon::after {
+    content: ""; position: absolute; border-radius: 50%; background: rgba(200, 150, 60, .25);
+  }
+  .moon::before { width: 34px; height: 34px; top: 48px; left: 100px; }
+  .moon::after { width: 20px; height: 20px; top: 110px; left: 58px; }
+  @keyframes glow { 0%,100% { transform: scale(1) } 50% { transform: scale(1.03) } }
+
+  .eyebrow { color: var(--gold); letter-spacing: .4em; font-size: 14px; margin-bottom: 8px; }
+  h1 { font-size: clamp(40px, 9vw, 72px); font-weight: 900; letter-spacing: .12em; color: var(--gold-soft); }
+  .subtitle { font-size: clamp(16px, 3.6vw, 20px); color: var(--muted); margin-top: 12px; }
+
+  .when {
+    display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px;
+    margin-top: 32px; padding: 14px 28px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--card); font-size: 18px;
+  }
+  .when strong { color: var(--gold); }
+
+  /* Countdown */
+  .countdown { display: flex; justify-content: center; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+  .cd-box {
+    min-width: 72px; padding: 12px 8px; border-radius: 12px; background: var(--card);
+    border: 1px solid var(--line); text-align: center;
+  }
+  .cd-num { font-size: 30px; font-weight: 600; color: var(--gold-soft); font-variant-numeric: tabular-nums; }
+  .cd-label { font-size: 12px; color: var(--muted); }
+  .cd-done { color: var(--gold); font-size: 20px; }
+
+  /* Sections */
+  section { margin-top: 56px; }
+  h2 {
+    font-size: 26px; color: var(--gold); text-align: center; margin-bottom: 24px; letter-spacing: .15em;
+  }
+  h2::before, h2::after { content: "✦"; font-size: 14px; margin: 0 12px; vertical-align: middle; opacity: .7; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px;
+  }
+  .card .icon { font-size: 28px; }
+  .card h3 { font-size: 18px; color: var(--gold-soft); margin: 6px 0 4px; }
+  .card p { color: var(--muted); font-size: 15px; }
+
+  .letter {
+    background: linear-gradient(160deg, rgba(200, 66, 59, .18), rgba(200, 66, 59, .05));
+    border: 1px solid rgba(200, 66, 59, .45); border-radius: 16px; padding: 28px; font-size: 17px;
+  }
+  .letter p + p { margin-top: 12px; }
+  .letter .sign { text-align: right; color: var(--gold); margin-top: 16px; }
+
+  .timeline { list-style: none; border-left: 2px solid var(--line); margin-left: 8px; padding-left: 24px; }
+  .timeline li { position: relative; padding-bottom: 20px; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -31px; top: 8px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold);
+  }
+  .timeline time { color: var(--gold); font-weight: 600; margin-right: 10px; }
+
+  .menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .dish { text-align: center; padding: 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); }
+  .dish span { display: block; font-size: 30px; }
+
+  .rsvp { text-align: center; }
+  .btn {
+    display: inline-block; margin-top: 12px; padding: 14px 36px; border-radius: 999px;
+    background: var(--gold); color: var(--night); font-weight: 600; font-size: 17px;
+    text-decoration: none; border: none; cursor: pointer; font-family: inherit;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(243, 201, 105, .35); }
+  .note { color: var(--muted); font-size: 14px; margin-top: 12px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 64px; }
+  .poem { color: var(--gold-soft); font-size: 18px; letter-spacing: .2em; margin-bottom: 8px; }
+
+  @media (max-width: 480px) {
+    .moon { width: 140px; height: 140px; }
+    .moon::before { top: 36px; left: 78px; }
+    .moon::after { top: 86px; left: 44px; }
+    .when { border-radius: 16px; font-size: 16px; }
+    .cd-box { min-width: 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .moon, .star { animation: none; } }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<main>
+  <header class="hero">
+    <div class="moon" aria-hidden="true"></div>
+    <div class="eyebrow">MID-AUTUMN FESTIVAL</div>
+    <h1>中秋家宴</h1>
+    <p class="subtitle">月圆人团圆 · 诚邀家人共度佳节</p>
+    <div class="when">
+      <span>📅 <strong>9月25日 周五</strong></span>
+      <span>🕖 <strong>晚上 7:00</strong></span>
+    </div>
+    <div class="countdown" id="countdown" aria-live="polite"></div>
+  </header>
+
+  <section>
+    <div class="letter">
+      <p>亲爱的家人们：</p>
+      <p>又到一年中秋时。今年的中秋节恰逢周五，我们特别准备了一场温馨的家庭聚餐，希望大家放下一周的忙碌，一起吃顿团圆饭、赏月、聊聊家常。</p>
+      <p>期待与你们相聚！</p>
+      <p class="sign">—— [主人姓名] 敬邀</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>聚餐信息</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🕖</div>
+        <h3>时间</h3>
+        <p>2026年9月25日（周五）<br>晚上 7:00 开席，6:30 起可到场</p>
+      </div>
+      <div class="card">
+        <div class="icon">📍</div>
+        <h3>地点</h3>
+        <p>[餐厅名称 / 家中地址]<br>[详细地址，XX路XX号]</p>
+      </div>
+      <div class="card">
+        <div class="icon">🚗</div>
+        <h3>交通停车</h3>
+        <p>[停车说明，例如：楼下停车场免费停车]</p>
+      </div>
+      <div class="card">
+        <div class="icon">👔</div>
+        <h3>着装建议</h3>
+        <p>休闲舒适即可，晚上可能转凉，记得带件外套</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>当晚安排</h2>
+    <ul class="timeline">
+      <li><time>18:30</time>家人陆续到场，喝茶叙旧</li>
+      <li><time>19:00</time>团圆晚宴正式开始</li>
+      <li><time>20:15</time>分享月饼 · 猜灯谜 · 孩子们的小表演</li>
+      <li><time>21:00</time>一起赏月、拍全家福</li>
+      <li><time>21:30</time>自由交流，尽兴而归</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>团圆菜单</h2>
+    <div class="menu">
+      <div class="dish"><span>🦆</span>[招牌烤鸭]</div>
+      <div class="dish"><span>🦀</span>[清蒸大闸蟹]</div>
+      <div class="dish"><span>🐟</span>[年年有鱼]</div>
+      <div class="dish"><span>🥬</span>[时令蔬菜]</div>
+      <div class="dish"><span>🥮</span>[各式月饼]</div>
+      <div class="dish"><span>🍵</span>[桂花茶 / 饮品]</div>
+    </div>
+    <p class="note" style="text-align:center">菜单为示例，最终以当天为准；如有忌口请提前告知</p>
+  </section>
+
+  <section class="rsvp">
+    <h2>回复出席</h2>
+    <p>为方便安排座位，请在 <strong style="color:var(--gold)">9月24日（周四）</strong> 前告知是否出席及人数。</p>
+    <a class="btn" href="tel:10000000000">📞 联系 [联系人姓名]</a>
+    <p class="note">电话 / 微信：[000-0000-0000]</p>
+  </section>
+
+  <footer>
+    <p class="poem">但愿人长久 · 千里共婵娟</p>
+    <p>祝全家中秋快乐，阖家幸福 🏮</p>
+  </footer>
+</main>
+
+<script>
+  // Starfield
+  const stars = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 70 + '%';
+    s.style.animationDelay = Math.random() * 3 + 's';
+    stars.appendChild(s);
+  }
+
+  // Countdown to 2026-09-25 19:00 in the viewer's local time
+  const target = new Date('2026-09-25T19:00:00').getTime();
+  const el = document.getElementById('countdown');
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      el.innerHTML = '<div class="cd-done">🎑 家宴进行中，中秋快乐！</div>';
+      return;
+    }
+    const parts = [
+      [Math.floor(diff / 86400000), '天'],
+      [Math.floor(diff / 3600000) % 24, '时'],
+      [Math.floor(diff / 60000) % 60, '分'],
+      [Math.floor(diff / 1000) % 60, '秒'],
+    ];
+    el.innerHTML = parts.map(([n, l]) =>
+      `<div class="cd-box"><div class="cd-num">${String(n).padStart(2, '0')}</div><div class="cd-label">${l}</div></div>`
+    ).join('');
+    setTimeout(tick, 1000);
+  }
+  tick();
+</script>
+</body>
+</html>
